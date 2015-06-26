@@ -1,0 +1,29 @@
+﻿<Properties StartupItem="csgl.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Shader.cs">
+    <Files>
+      <File FileName="ResourceMaterial.cs" Line="5" Column="15" />
+      <File FileName="ResourceMesh.cs" Line="3" Column="15" />
+      <File FileName="ResourceShader.cs" Line="5" Column="15" />
+      <File FileName="ResourceShaderProgram.cs" Line="5" Column="15" />
+      <File FileName="ResourceTexture.cs" Line="3" Column="15" />
+      <File FileName="ResourceType.cs" Line="1" Column="1" />
+      <File FileName="Shader.cs" Line="19" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="csgl" expanded="True">
+            <Node name="csgl" expanded="True">
+              <Node name="Shader.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
