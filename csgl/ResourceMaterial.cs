@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Glade;
 
 namespace csgl {
 
   public class ResourceMaterial: Resource, IDisposable {
-    protected Dictionary< string, Texture > texturesList;
 
     public Material material {
       get { return this._material; }
@@ -24,7 +22,6 @@ namespace csgl {
       this.material = new Material( name );
       this.material.resource = this;
       this.IsValid = true;
-      this.texturesList = new Dictionary< string, Texture >();
 
       var linesList = source.Split( '\n' );
       var parser = new TextParser();
@@ -33,16 +30,18 @@ namespace csgl {
         switch( pair.Key ) {
           case "shader":
             {
-              this.material.shader = ( ShaderProgram ) ( ResourceShaderProgram ) Resource.Get( pair.Value );
+              this.material.shader = ( ShaderProgram ) Resource.Get( pair.Value );
             }
           break;
-          default:
+          default: //textures
             {
               Console.WriteLine( "pair.Value = {0}", pair.Value );
               Texture texture = ( Texture ) Resource.Get( pair.Value );
               Console.WriteLine( texture == null ? "null" : "not null" );
               texture.resource.Inc();
-              this.texturesList.Add( pair.Key, texture );
+              this.material.AddTexture( pair.Key, texture );
+              //this.texturesList.Add( pair.Key, texture );
+              //this.material.shader.AddUniform( new ShaderProgramUniformTexture( pair.Key, texture ) );
             }
           break;
         }
@@ -60,11 +59,6 @@ namespace csgl {
           Resource.RemoveResource( this.id );
           this.IsValid = false;
           this.material.Dispose();
-          foreach( var texture in this.texturesList ) {
-            if( texture.Value.resource != null ) {
-              texture.Value.resource.Dec();
-            }
-          }
           Console.WriteLine( "~ResourceMaterial '{0}' done", this.name );
         }
       }

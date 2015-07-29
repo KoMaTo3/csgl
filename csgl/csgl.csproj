@@ -96,6 +96,14 @@
     <Compile Include="Vector4UInt32.cs" />
     <Compile Include="VertexBufferObject.cs" />
     <Compile Include="VertexBufferObjectMesh.cs" />
+    <Compile Include="ShaderProgramUniformTexture.cs" />
+    <Compile Include="TextureBufferObject.cs" />
+    <Compile Include="ShaderProgramUniformFloatPointer.cs" />
+    <Compile Include="ValueFloat.cs" />
+    <Compile Include="ValueMatrix4.cs" />
+    <Compile Include="ShaderProgramUniformMatrix4Pointer.cs" />
+    <Compile Include="ResourceModel.cs" />
+    <Compile Include="Model.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

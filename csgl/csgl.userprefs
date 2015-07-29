@@ -1,21 +1,25 @@
 ﻿<Properties StartupItem="csgl.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Shader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core.cs">
     <Files>
-      <File FileName="ResourceMaterial.cs" Line="5" Column="15" />
-      <File FileName="ResourceMesh.cs" Line="3" Column="15" />
-      <File FileName="ResourceShader.cs" Line="5" Column="15" />
-      <File FileName="ResourceShaderProgram.cs" Line="5" Column="15" />
-      <File FileName="ResourceTexture.cs" Line="3" Column="15" />
-      <File FileName="ResourceType.cs" Line="1" Column="1" />
-      <File FileName="Shader.cs" Line="19" Column="6" />
+      <File FileName="Core.cs" Line="83" Column="54" />
+      <File FileName="Object.cs" Line="146" Column="36" />
+      <File FileName="Resource.cs" Line="1" Column="1" />
+      <File FileName="ResourceMaterial.cs" Line="42" Column="61" />
+      <File FileName="Material.cs" Line="78" Column="27" />
+      <File FileName="Parameters.cs" Line="1" Column="1" />
+      <File FileName="Tools.cs" Line="1" Column="1" />
+      <File FileName="ShaderProgramUniformTexture.cs" Line="16" Column="7" />
+      <File FileName="TextureBufferObject.cs" Line="72" Column="5" />
+      <File FileName="ShaderProgram.cs" Line="103" Column="5" />
+      <File FileName="Texture.cs" Line="42" Column="78" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="csgl" expanded="True">
             <Node name="csgl" expanded="True">
-              <Node name="Shader.cs" selected="True" />
+              <Node name="Core.cs" selected="True" />
             </Node>
           </Node>
         </State>

@@ -96,6 +96,14 @@ namespace csgl {
       return true;
     }
 
+    public int GetUniformLocation( string uniformName ) {
+      return GL.GetUniformLocation( this._descriptor, uniformName );
+    }
+
+    public void SetUniform( string uniformName, int value ) {
+      GL.Uniform1( this.GetUniformLocation( uniformName ), value );
+    }
+
     public bool LinkProgram() {
       GL.LinkProgram( this.descriptor );
       string log = GL.GetProgramInfoLog( this.descriptor );
@@ -134,6 +142,7 @@ namespace csgl {
           uniform.Apply();
         }
       }
+      //Parameters.tboObjectsMatrices.Bind( this );
     }
 
     public static void UnUse() {

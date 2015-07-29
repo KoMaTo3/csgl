@@ -33,13 +33,18 @@ namespace csgl {
       GL.TexParameter( TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, ( int ) TextureMagFilter.Nearest );
       GL.TexParameter( TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, ( int ) TextureMinFilter.Nearest );
       fixed( byte *rawImage = image.GetRawPointer() ) {
-        GL.TexImage2D( TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.width, image.height, 0, PixelFormat.Rgba, PixelType.Byte, ( IntPtr ) rawImage );
+        GL.TexImage2D( TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, image.width, image.height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, ( IntPtr ) rawImage );
       }
       GL.BindTexture( TextureTarget.Texture2D, 0 );
     }
 
     public void Bind( TextureTarget target = TextureTarget.Texture2D ) {
+      Console.WriteLine( "bind texture {0} = {1}", this.name, this.descriptor );
       GL.BindTexture( target, this.descriptor );
+    }
+
+    static public void BindNull( TextureTarget target = TextureTarget.Texture2D ) {
+      GL.BindTexture( target, 0 );
     }
 
     ~Texture() {

@@ -13,6 +13,7 @@ namespace csgl {
 
     public override void Apply() {
       GL.UniformMatrix4( this.location, false, ref this._matrix );
+      Console.WriteLine( "=> uniform '{0}' = {1}", this.name, this._matrix );
     }
 
     private ShaderProgramUniformMatrix4()

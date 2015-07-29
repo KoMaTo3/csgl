@@ -148,7 +148,12 @@ namespace csgl {
           {
             result = new ResourceMesh( fileName, System.Text.Encoding.Default.GetString( data ) );
           }
-        break; //mat
+        break; //mesh
+        case ".model":
+          {
+            result = new ResourceModel( fileName, System.Text.Encoding.Default.GetString( data ) );
+          }
+        break; //model
       }//switch extension
 
       if( result != null ) {
@@ -198,6 +203,10 @@ namespace csgl {
 
     public static explicit operator Mesh( Resource resource ) {
       return ( resource.type == ResourceType.MESH ? ( Mesh ) ( ResourceMesh ) resource : null );
+    }
+
+    public static explicit operator Model( Resource resource ) {
+      return ( resource.type == ResourceType.MODEL ? ( Model ) ( ResourceModel ) resource : null );
     }
 
     /* public static explicit operator string( Resource resource ) {

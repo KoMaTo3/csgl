@@ -23,7 +23,6 @@ namespace csgl {
         }
         if( length >= 3 ) { //TGA
           if(
-            data[ 0 ] == 0 &&
             data[ 1 ] == 0 &&
             ( data[ 2 ] == 0x02 || data[ 2 ] == 0x0A ) ) {
             return ImageLoader.LoadFromTGA( buffer );
@@ -94,9 +93,9 @@ namespace csgl {
                 UInt32 dest_pos = ( UInt32 ) ( x + y * size.Width ) << 2;
                 //dest_pos = ( x + ( size.Height - y - 1 ) * size.Width ) << 2;
                 src_pos = ( UInt32 ) ( x + y * size.Width ) * mult + 18;
-                dest[ dest_pos ] = tmp[ src_pos + 2 ];
+                dest[ dest_pos ] = tmp[ src_pos + 0 ];
                 dest[ dest_pos + 1 ] = tmp[ src_pos + 1 ];
-                dest[ dest_pos + 2 ] = tmp[ src_pos + 0 ];
+                dest[ dest_pos + 2 ] = tmp[ src_pos + 2 ];
                 dest[ dest_pos + 3 ] = ( byte ) ( bpp == 32 ? tmp[ src_pos + 3 ] : 255 );
               }
           } else { //RLE-compression 0x0A

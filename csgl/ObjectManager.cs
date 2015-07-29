@@ -20,10 +20,29 @@ namespace csgl {
       this.Dispose( true );
     }
 
-    public Object CreateObject( string name ) {
+    public Object CreateObject( string name, Model model = null ) {
       Object obj = new Object( name );
+      if( model != null ) {
+        obj.mesh = model.mesh;
+        obj.material = model.material;
+      }
       this.objectList.Add( obj );
       return obj;
+    }
+
+    public Object Get( string name ) {
+      foreach( Object obj in this.objectList ) {
+        if( obj.name == name ) {
+          return obj;
+        }
+      }
+      return null;
+    }
+
+    public void Update() {
+      foreach( var obj in this.objectList ) {
+        obj.Update();
+      }
     }
 
     public void Render() {

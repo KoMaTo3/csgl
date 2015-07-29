@@ -1,0 +1,2 @@
+mesh = "meshes/sprite.mesh"
+material = "materials/floor.mat"
