@@ -37,6 +37,7 @@ namespace csgl {
       this.objects = new ObjectManager();
       Parameters.tboObjectsMatrices = new TextureBufferObject( "objectsData" );
       Parameters.worldMatrix = new ValueMatrix4();
+      Parameters.interfaceMatrix = new ValueMatrix4();
       Parameters.projectionMatrix = new ValueMatrix4();
       this.staticData.t = new ValueFloat();
       this.staticData.x = new ValueFloat();
@@ -70,7 +71,7 @@ namespace csgl {
       obj = this.objects.CreateObject( "floor0", ( Model ) Resource.Get( "models/floor.model" ) );
       obj.position = new Vector3( 0.0f, -1.0f, 0.0f );
       obj.scale = new Vector3( 5.0f, 5.0f, 1.0f );
-      obj.rotation = new Vector3( Tools.Deg2Rag( 90.0f ), 0.0f, 0.0f );
+      obj.rotation = new Vector3( Tools.Deg2Rag( -90.0f ), 0.0f, 0.0f );
 
       obj = this.objects.CreateObject( "obj3", ( Model ) Resource.Get( "models/cube.model" ) );
       obj.position = Vector3.Zero;
@@ -79,15 +80,31 @@ namespace csgl {
       //obj.material = ( Material ) Resource.Get( "materials/main-2.mat" );
       //obj.mesh = ( Mesh ) Resource.Get( "meshes/test.mesh" );
 
-      obj = this.objects.CreateObject( "obj", ( Model ) Resource.Get( "models/sprite.model" ) );
-      obj.position = new Vector3( 0.5f, 0.0f, 0.0f );
-      obj.scale = new Vector3( 0.7f, 0.2f, 1.0f );
-      obj.rotation = new Vector3( 0.0f, 0.0f, ( float ) ( 22.0f * Math.PI / 180.0f ) );
+      obj = this.objects.CreateObject( "obj4", ( Model ) Resource.Get( "models/cube.model" ) );
+      obj.position = new Vector3( 1.0f, -0.1999f, 0.0f );
+      obj.scale = new Vector3( 0.1f, -0.8f, 0.5f );
+      obj.rotation = Vector3.Zero;
 
-      obj = this.objects.CreateObject( "obj2", ( Model ) Resource.Get( "models/sprite.model" ) );
-      obj.position = Vector3.Zero;
-      obj.scale = new Vector3( 0.7f, 0.2f, 1.0f );
-      obj.rotation = new Vector3( 0.0f, 0.0f, ( float ) ( -22.0f * Math.PI / 180.0f ) );
+      obj = this.objects.CreateObject( "obj5", ( Model ) Resource.Get( "models/cube.model" ) );
+      obj.position = new Vector3( -1.0f, -0.5999f, 0.0f );
+      obj.scale = new Vector3( 0.1f, -0.4f, 0.5f );
+      obj.rotation = Vector3.Zero;
+
+      obj = this.objects.CreateObject( "ui/top", ( Model ) Resource.Get( "models/sprite.model" ) );
+      obj.position = new Vector3( 0.0f, 0.9f, 0.0f );
+      obj.scale = new Vector3( 1.0f, 0.1f, 1.0f );
+      obj.rotation = new Vector3( 0.0f, 0.0f, 0.0f );
+
+      obj = this.objects.CreateObject( "ui/bottom", ( Model ) Resource.Get( "models/sprite.model" ) );
+      obj.position = new Vector3( 0.0f, -0.9f, 0.0f );
+      obj.scale = new Vector3( 1.0f, 0.1f, 1.0f );
+      obj.rotation = new Vector3( 0.0f, 0.0f, 0.0f );
+
+      obj = this.objects.CreateObject( "ui/button/0", ( Model ) Resource.Get( "models/sprite.model" ) );
+      obj.position = new Vector3( -0.8f, -0.9f, -0.01f );
+      obj.scale = new Vector3( 0.05f, 0.05f, 1.0f );
+      obj.rotation = new Vector3( 0.0f, 0.0f, Tools.Deg2Rag( 45.0f ) );
+
       //obj.material = ( Material ) Resource.Get( "materials/main-2.mat" );
       //obj.mesh = ( Mesh ) Resource.Get( "meshes/test.mesh" );
       //( ( Material ) Resource.Get( "main-2.mat" ) ).Apply();
@@ -135,8 +152,8 @@ namespace csgl {
         Parameters.tboObjectsMatrices.SetData( matrix, index++ );
       } */
 
-      //worldMatrix
       Parameters.worldMatrix.value = Tools.MakeMatrix( new Vector3( 0.0f, 0.0f, 0.0f ), new Vector3( 1.0f, 1.0f, 1.0f ), ( float ) ( 0.0f * Math.PI / 180.0f ) );
+      Parameters.interfaceMatrix.value = Tools.MakeMatrix( new Vector3( 0.0f, 0.0f, 0.0f ), new Vector3( 1.0f, 1.0f, 1.0f ), 0.0f );
 
       Parameters.projectionMatrix.value = Tools.MakeMatrixPerspective(
         new Vector3( 0.0f, -1.0f, 0.0f ),
@@ -187,6 +204,7 @@ namespace csgl {
       foreach( ShaderProgram shaderProgram in Resource.GetAllShaderProgram() ) {
         shaderProgram.AddUniform( new ShaderProgramUniformMatrix4Pointer( "worldMatrix", Parameters.worldMatrix ) );
         shaderProgram.AddUniform( new ShaderProgramUniformMatrix4Pointer( "projectionMatrix", Parameters.projectionMatrix ) );
+        shaderProgram.AddUniform( new ShaderProgramUniformMatrix4Pointer( "interfaceMatrix", Parameters.interfaceMatrix ) );
         shaderProgram.AddUniform( new ShaderProgramUniformFloatPointer( "time", this.staticData.t ) );
         Parameters.tboObjectsMatrices.Bind( shaderProgram );
       }

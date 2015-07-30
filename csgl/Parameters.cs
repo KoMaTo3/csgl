@@ -4,6 +4,7 @@ using OpenTK;
 namespace csgl {
   public class Parameters {
     public static ValueMatrix4 worldMatrix;
+    public static ValueMatrix4 interfaceMatrix;
     public static ValueMatrix4 projectionMatrix;
     public static TextureBufferObject tboObjectsMatrices;
 

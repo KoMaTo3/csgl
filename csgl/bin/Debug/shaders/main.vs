@@ -8,8 +8,7 @@ layout(location = 3) in vec4 texCoords;
 const int matrixStride = 16;
 
 uniform samplerBuffer objectsData;
-uniform mat4 worldMatrix;
-uniform mat4 projectionMatrix;
+uniform mat4 interfaceMatrix;
 
 out FragData
 {
@@ -37,7 +36,7 @@ void main() {
     texelFetch( objectsData, objectMatrixIndex + 14 ).x,
     texelFetch( objectsData, objectMatrixIndex + 15 ).x
   );
-  gl_Position = vert * modelMatrix * worldMatrix * projectionMatrix;
+  gl_Position = vert * modelMatrix * interfaceMatrix;
   fragOut.color = vColor;
   fragOut.texCoords = texCoords.xy;
 }

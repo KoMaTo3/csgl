@@ -6,7 +6,7 @@ uniform float time;
 
 out vec4 out_frag_color;
 //vec4 debug = vec4( 1.0, 1.0, 1.0, 0.1 );
-vec3 lightDirection = normalize( vec3( 0, 1, 1 ) );
+vec3 lightDirection = normalize( vec3( 1, -1, 1 ) );
 
 in FragData
 {
@@ -18,8 +18,11 @@ in FragData
 void main() {
   //float coeff = ( texCoords.x + texCoords.y > 1 ? 0 : 1 );
   //out_frag_color = ( texture2D( texture0, texCoords ) * coeff + texture2D( texture1, texCoords ) * ( 1 - coeff ) ) * color * debug;
-  float diffuse = clamp( dot( normal, lightDirection ), 0, 1 );
+
+  //float diffuse = clamp( dot( normal, lightDirection ), 0, 1 );
+  float diffuse = clamp( max( dot( normal, lightDirection ), 0.0 ), 0.0, 1.0 );
   vec4 vDiffuse = vec4( diffuse, diffuse, diffuse, 1 );
+
   //out_frag_color = texture2D( texture1, texCoords );
   //out_frag_color = vec4( normal, 1 );
   vec4 colorWithLight = texture2D( texture1, texCoords );

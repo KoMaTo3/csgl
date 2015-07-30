@@ -1,6 +1,7 @@
 #version 330
 
 uniform sampler2D texture0;
+uniform sampler2D texture1;
 uniform float time;
 
 out vec4 out_frag_color;
@@ -13,5 +14,5 @@ in FragData
 };
 
 void main() {
-  out_frag_color = texture2D( texture0, texCoords ) * color /* * debug */ * vec4( 1, 1, 1, sin( time * 10 ) * 0.5 + 0.5 );
+  out_frag_color = texture2D( texture1, texCoords ) /* * debug * vec4( 1, 1, 1, sin( time * 10 ) * 0.5 + 0.5 ) */ ;
 }
